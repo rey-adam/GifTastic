@@ -19,12 +19,14 @@ var movies = ["Deadpool", "Moana", "Fantastic Beasts", "Get Out"];
         }).done(function(response) {
         	console.log(response);
       
-      	//code to get GIFS go here
+      	//code to get GIFS go here to show on the page 
 
         });
       }
 
 
+//MISSING 
+// TO MAKE THE GIFS PAUSE AND PLAY 
 
 
 
