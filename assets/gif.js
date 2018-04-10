@@ -8,10 +8,11 @@ var movies = ["Deadpool", "Moana", "Fantastic Beasts", "Get Out"];
 
 
 // displayMovieInfo function re-renders the HTML to display the appropriate content
-      function displayMovieInfo() {
+      function displayMovieGifs() {
         var movie = $("#movie-input").val();
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         movie + "&api_key=wpcti61gVVsZVscWNonebhBb7euepWEN&limit=10";
+        // var queryURL = "https://api.giphy.com/v1/gifs/search?q=titanic&api_key=wpcti61gVVsZVscWNonebhBb7euepWEN&limit=10";
         // Creating an AJAX call for the specific movie button being clicked
         $.ajax({
           url: queryURL,
@@ -57,7 +58,7 @@ $("#addMovie").on("click", function(event) {
 
     event.preventDefault();
 
-    //users movie search appers on the screen 
+    //users movie search appears on the screen 
     var movieTitle = $("#movie-input").val();
     movies.push(movieTitle);
 
@@ -67,7 +68,7 @@ $("#addMovie").on("click", function(event) {
 });
 
   // Adding a click event listener to all elements with a class of "movie"
-      $(document).on("click", ".movie", displayMovieInfo);
+      $(document).on("click", displayMovieGifs);
 
 // the initial list of movies will show upon opening the web app 
 renderButtons();
