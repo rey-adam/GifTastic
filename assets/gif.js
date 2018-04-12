@@ -22,12 +22,28 @@ var movies = ["Deadpool", "Moana", "Fantastic Beasts", "Get Out", "Titanic", "Ir
     }
 
 $(document).on('click','.movieButton',function(){
+  $('#allMovies').empty();
   var type = $(this).data('type');
   var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=wpcti61gVVsZVscWNonebhBb7euepWEN&limit=10";
 
   $.ajax({url:queryURL, method: 'GET'})
   .done(function(response){
-    console.log(response);
+    for (var i = 0; i < response.data.length; i++){
+      var movieDiv = $('<div class = "movie-item">');
+      var rating = response.data[i].rating;
+      var p = $('<p>').text('Rating: ' +rating);
+      var animated = response.data[i].images.fixed_height.url;
+      var still = response.data[i].images.fixed_height_still.url;
+      var image = $('<img>');
+      image.attr('src',still);
+      image.attr('data-still',still);
+      image.attr('data-animated',animated);
+      image.attr('data-state','still');
+      image.addClass('searchMovie');
+      movieDiv.append(p);
+      movieDiv.append(image);
+      $('#allMovies').append(movieDiv);
+    }
   })
 })
 
