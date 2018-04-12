@@ -21,7 +21,15 @@ var movies = ["Deadpool", "Moana", "Fantastic Beasts", "Get Out", "Titanic", "Ir
       }
     }
 
+$(document).on('click','.movieButton',function(){
+  var type = $(this).data('type');
+  var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=wpcti61gVVsZVscWNonebhBb7euepWEN&limit=10";
 
+  $.ajax({url:queryURL, method: 'GET'})
+  .done(function(response){
+    console.log(response);
+  })
+})
 
 
 
