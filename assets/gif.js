@@ -1,5 +1,3 @@
-// apiKey
-// wpcti61gVVsZVscWNonebhBb7euepWEN
 
 $(function(){
     populateButtons(moviesArray, 'movieButton', '#allMovies')
@@ -48,7 +46,8 @@ $(document).on('click','.movieButton',function(){
 })
 
 // onclick gifs to make it still and animate 
-$(document).on('click', '.searchMovie', function(){
+$(document).on('click', '.searchMovie', function(e){
+  event.preventDefault()
   var state = $(this).attr('data-state');
   if (state === 'still'){
     $(this).attr('src', $(this).data('animated'));
@@ -60,9 +59,14 @@ $(document).on('click', '.searchMovie', function(){
 })
 
 // adding a new movie to the array/list after searching for it
-$('#addSearch').on('click', function(){
+$('#addSearch').on('click', function(e){
+  event.preventDefault();
   var newSearch = $('input').eq(0).val();
+
+  if (newSearch.length > 2) {
   moviesArray.push(newSearch);
+  }
+
   populateButtons(moviesArray, 'movieButton', '#allMovies');
   return false;
 })
