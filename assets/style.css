@@ -2,4 +2,13 @@ h1 {
     color: green;
 }
 
-/* css test */
+#addMovie {
+    color: green;
+}
+
+.container {
+    margin: auto;
+    width: 50%;
+    border: 3px dashed green;
+    padding: 10px;
+}
